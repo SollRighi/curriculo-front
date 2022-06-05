@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+import { Apresentacao } from './components/Apresentacao'
+import sol from './components/imagens/sol.jpg'
+// import { Sobre } from './components/Sobre'
+// import { Projetos } from './components/Projetos'
+// import { Comentarios } from './components/Comentarios'
+// import { Contato } from './components/Contato'
+
+ const StyleBody = styled.div`
+  display: flex;
+  flex-direction:column;
+  height: 100vh;
+  width: 100vw;
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StyleBody>
+      <Apresentacao imagem={sol} nome={"Solange Righi"} />
+      {/* <Sobre />
+      <Projetos />
+      <Comentarios />
+      <Contato /> */}
+    </StyleBody>
   );
 }
 
