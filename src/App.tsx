@@ -11,6 +11,7 @@ import sol from './components/imagens/sol.jpg'
   flex-direction:column;
   height: 100vh;
   width: 100vw;
+  
 `
 
 function App() {
