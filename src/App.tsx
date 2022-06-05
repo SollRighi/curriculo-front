@@ -17,7 +17,7 @@ import sol from './components/imagens/sol.jpg'
 function App() {
   return (
     <StyleBody>
-      <Apresentacao imagem={sol} nome={"Solange Righi"} />
+      <Apresentacao imagem={sol} nome={"Solange Vitoria P. Righi"} profissao="Desenvolverora Web Full Stack Junior"/>
       {/* <Sobre />
       <Projetos />
       <Comentarios />
