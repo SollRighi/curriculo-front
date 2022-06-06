@@ -5,7 +5,7 @@ const StyleSobre = styled.div`
   height: 85vh;
   //width: 100vw;
   justify-content: center;
-  background-color:#6c395d;
+  background-color:#c21b12;
 `
 
 const StyleTexto = styled.p`

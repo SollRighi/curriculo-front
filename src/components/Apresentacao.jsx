@@ -9,7 +9,7 @@ const StyleApresentacao = styled.div`
     align-items:center;
     height: 90vh;
     /* width: 100vw; */
-    background-color: #492a4a;
+    background-color: #9a151a;
     justify-content: center;
     gap: 50px;
 `
@@ -19,7 +19,7 @@ const StyleHeader = styled.div`
     align-items:center;
     height: 5vh;
     /* width: 100%; */
-    background-color: #492a4a;
+    background-color: #9a151a;
     justify-content: flex-end   ;
     margin: 0;
     padding: 0;
