@@ -1,13 +1,40 @@
 import styled from 'styled-components';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import AccountTreeOutlinedIcon from '@mui/icons-material/AccountTreeOutlined';
+import InsertCommentOutlinedIcon from '@mui/icons-material/InsertCommentOutlined';
+import ConnectWithoutContactOutlinedIcon from '@mui/icons-material/ConnectWithoutContactOutlined';
 
 const StyleApresentacao = styled.div`
     display: flex;
     align-items:center;
-    height: 95vh;
-    width: 100vw;
+    height: 90vh;
+    /* width: 100vw; */
     background-color: #492a4a;
     justify-content: center;
     gap: 50px;
+`
+
+const StyleHeader = styled.div`
+    display: flex;
+    align-items:center;
+    height: 5vh;
+    /* width: 100%; */
+    background-color: #492a4a;
+    justify-content: flex-end   ;
+    margin: 0;
+    padding: 0;
+`
+
+const StyleHeaderItem = styled.button`
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-right: 20px;
+    color: white;
+    font-size: 18px;
+    margin-top: 10px;
+    background-color:unset;
+    border:unset;
 `
 
 const StyleNome = styled.h1`
@@ -41,16 +68,36 @@ const StyleFoto = styled.div`
 
 export function Apresentacao (props) {
     return(
-        <StyleApresentacao>
-            <div>
-                <StyleNome>
-                    {props.nome}
-                </StyleNome>
-                <StyleProfissao>
-                    {props.profissao}
-                </StyleProfissao>
-            </div>
-            <StyleFoto imagem={props.imagem} />
-        </StyleApresentacao>
+        <>
+            <StyleHeader>
+                <StyleHeaderItem>
+                    <InfoOutlinedIcon />
+                    {props.sobre}
+                </StyleHeaderItem>
+                <StyleHeaderItem>
+                    <AccountTreeOutlinedIcon />
+                    {props.projetos}
+                </StyleHeaderItem>
+                <StyleHeaderItem>
+                    <InsertCommentOutlinedIcon />
+                    {props.comentarios}
+                </StyleHeaderItem>
+                <StyleHeaderItem>
+                    <ConnectWithoutContactOutlinedIcon />
+                    {props.contato}
+                </StyleHeaderItem>
+            </StyleHeader>
+            <StyleApresentacao>
+                <div>
+                    <StyleNome>
+                        {props.nome}
+                    </StyleNome>
+                    <StyleProfissao>
+                        {props.profissao}
+                    </StyleProfissao>
+                </div>
+                <StyleFoto imagem={props.imagem} />
+            </StyleApresentacao>
+        </>
     )
 }
