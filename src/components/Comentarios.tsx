@@ -1,7 +1,13 @@
 import styled from "styled-components"
 import TextField from '@mui/material/TextField';
-import { useState } from "react";
+//import { useState } from "react";
 import { Button } from "@mui/material";
+
+interface iTituloComentario {
+  titulo: string;
+  aoClicar: () => void;
+  aoAlterar: () => void;
+}
 
 const StyleBodyCriaComentario = styled.div`
   width:30%;
@@ -18,26 +24,19 @@ const StyleTitulo = styled.h1`
   margin-top: 30px;
   margin-left: 50px;
 `
-export function Comentarios (props) {
-
-  const [value, setValue] = useState('');
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+export function Comentarios (props: iTituloComentario) {
 
   return(
     <StyleBodyCriaComentario>
       <StyleTitulo> 
-        {props.titulo1} 
+        {props.titulo} 
       </StyleTitulo>
       <TextField
           id="outlined-multiline-flexible"
           label="Nome"
           multiline
           maxRows={4}
-          value={value}
-          onChange={handleChange}
+          onChange={props.aoAlterar}
         />
         <TextField
           id="outlined-multiline-static"
@@ -47,11 +46,8 @@ export function Comentarios (props) {
           defaultValue=""
         />
         <Button 
-          variant="outlined"> Enviar
+          variant="outlined" onClick={props.aoClicar}> Enviar
         </Button>
-        <StyleTitulo> 
-          {props.titulo2} 
-        </StyleTitulo>
     </StyleBodyCriaComentario>
   )
 }

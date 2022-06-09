@@ -1,5 +1,9 @@
 import styled from "styled-components"
 
+interface iProjetos {
+  titulo: string;
+}
+
 const StyleProjetos = styled.div`
   //background-color: #fc4b2a;
   width: 100%;
@@ -14,18 +18,11 @@ const StyleTitulo = styled.h1`
   color: white;
   text-align: center;
 `
-const StyleItem = styled.div`
-  width: 300px;
-  height: 100px;
-  background-color: white;
-  margin: 50px;
-`
 
-export function Projetos (props) {
+export function Projetos (props: iProjetos) {
   return (
     <StyleProjetos>
       <StyleTitulo> { props.titulo } </StyleTitulo>
-      <StyleItem> {props.item} </StyleItem>
     </StyleProjetos>
   )
 }

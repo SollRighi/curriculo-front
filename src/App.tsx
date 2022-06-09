@@ -3,9 +3,13 @@ import { Apresentacao } from './components/Apresentacao'
 import sol from './components/imagens/sol.jpg'
 import { Sobre } from './components/Sobre';
 import { Projetos } from './components/Projetos';
-import { Comentarios } from './components/Comentarios';
+//import { Comentarios } from './components/Comentarios';
 import { Contato } from './components/Contato';
-import { HistoricoComentarios } from './components/HistoricoComentarios';
+import {IcSobre} from './components/componentsIcones/IcSobre';
+import {IcProjetos} from './components/componentsIcones/IcProjetos';
+import {IcContato} from './components/componentsIcones/IcContato';
+import {IcComentarios} from './components/componentsIcones/IcComentarios';
+//import { useState } from 'react';
 
 const StyleBody = styled.div`
   display: flex;
@@ -24,18 +28,39 @@ const StyleDinamico = styled.div`
   //background-color: #f7a48b;
   gap: 300px;
 `
+const StyleHeader = styled.div`
+  display: flex;
+  align-items:center;
+  height: 5vh;
+  justify-content: flex-end   ;
+  margin: 0;
+  padding: 0;
+`
 
 function App() {
+
+  //const [nome, setNome] = useState("")
+
+  function printarTela () {
+    console.log("verificar")
+  }
+
+  // function salvarComentario () {
+
+  // }
+
   return (
     <StyleBody>
+      <StyleHeader>
+        <IcSobre texto="Sobre" aoClicar={() => printarTela ()}/>
+        <IcProjetos texto="Projetos" aoClicar={() => printarTela ()}/>
+        <IcContato texto="Contato" aoClicar={() => printarTela ()}/>
+        <IcComentarios texto="Comentarios" aoClicar={() => printarTela ()}/>
+      </StyleHeader>
       <Apresentacao 
         imagem={sol} 
         nome={"Solange Vitoria P. Righi"} 
         profissao="Desenvolverora Web Full Stack Junior"
-        sobre="Sobre"
-        projetos="Projetos"
-        comentarios="Comentarios"
-        contato="Contato"
       />
       <Sobre 
         texto="&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
@@ -52,14 +77,15 @@ function App() {
         //item
       />
       <StyleDinamico>
-        <Comentarios 
-          titulo1="Comentarios:"
-        />
+        {/* <Comentarios 
+          // titulo="Comentarios:"
+          // aoClicar={() => salvarComentario()}
+          //aoAlterar={(e) => setNome (e.target.value)}
+        /> */}
         <Contato 
-          tituloContato="Deixe o seu contato:"
+          titulo="Deixe o seu contato:"
         />
       </StyleDinamico>
-      <HistoricoComentarios itemHistoricoComentario="oi"/>
     </StyleBody>
   );
 }

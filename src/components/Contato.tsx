@@ -1,6 +1,10 @@
 import { Button, TextField } from "@mui/material"
 import styled from "styled-components"
 
+interface iTituloContato {
+  titulo: string
+}
+
 const StyleContato = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,11 +18,11 @@ const StyleTituloContato = styled.div`
   margin-left: 50px;
 `
 
-export function Contato (props) {
+export function Contato (props: iTituloContato) {
   return(
     <StyleContato>
       <StyleTituloContato>
-        {props.tituloContato}
+        {props.titulo}
       </StyleTituloContato>
       <TextField
         required

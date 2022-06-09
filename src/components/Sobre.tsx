@@ -1,11 +1,13 @@
 import styled from "styled-components"
 
+interface textoSobre {
+  texto: string;
+}
+
 const StyleSobre = styled.div`
   display: flex;
   height: 85vh;
-  //width: 100vw;
   justify-content: center;
-  //background-color:#831818;
 `
 
 const StyleTexto = styled.p`
@@ -20,7 +22,7 @@ const StyleTexto = styled.p`
   margin-top: 80px;
 `
 
-export function Sobre (props) {
+export function Sobre (props: textoSobre) {
   return(
     <StyleSobre>
       <StyleTexto>
