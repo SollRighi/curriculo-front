@@ -5,18 +5,24 @@ import { Sobre } from './components/Sobre';
 import { Projetos } from './components/Projetos';
 import { Comentarios } from './components/Comentarios';
 import { Contato } from './components/Contato';
+import { HistoricoComentarios } from './components/HistoricoComentarios';
 
 const StyleBody = styled.div`
   display: flex;
   flex-direction:column;
   /* width: 100vw; */
   position: relative;
+  background: #200122;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #6f0000, #200122);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #6f0000, #200122); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 `
 const StyleDinamico = styled.div`
   display: flex;
   width: 100%;
-  height: 150vh;
-  background-color: #f7a48b;
+  height: 70vh;
+  //background-color: #f7a48b;
+  gap: 300px;
 `
 
 function App() {
@@ -47,12 +53,13 @@ function App() {
       />
       <StyleDinamico>
         <Comentarios 
-          titulo1="Comentarios:" 
-          titulo2="Historico de Comentários:"
-          //itemHistoricoComentario
+          titulo1="Comentarios:"
         />
-        <Contato />
+        <Contato 
+          tituloContato="Deixe o seu contato:"
+        />
       </StyleDinamico>
+      <HistoricoComentarios itemHistoricoComentario="oi"/>
     </StyleBody>
   );
 }

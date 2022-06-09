@@ -3,23 +3,20 @@ import TextField from '@mui/material/TextField';
 import { useState } from "react";
 import { Button } from "@mui/material";
 
-const StyleBodyComentarios = styled.div`
+const StyleBodyCriaComentario = styled.div`
   width:30%;
-  height: 150vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-left: 80px;
+  margin-left: 150px;
 `
 const StyleTitulo = styled.h1`
   font-family: 'Tai Heritage Pro', serif;
   font-size: 25px;
-  color: black;
+  color: white;
   margin-top: 30px;
   margin-left: 50px;
-`
-const StyleLimiteHistorico = styled.div`
-  max-height: 800px;
 `
 export function Comentarios (props) {
 
@@ -30,7 +27,7 @@ export function Comentarios (props) {
   };
 
   return(
-    <StyleBodyComentarios>
+    <StyleBodyCriaComentario>
       <StyleTitulo> 
         {props.titulo1} 
       </StyleTitulo>
@@ -55,9 +52,6 @@ export function Comentarios (props) {
         <StyleTitulo> 
           {props.titulo2} 
         </StyleTitulo>
-        <StyleLimiteHistorico>
-          {props.itemHistoricoComentario}
-        </StyleLimiteHistorico>
-    </StyleBodyComentarios>
+    </StyleBodyCriaComentario>
   )
 }

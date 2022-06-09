@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const StyleProjetos = styled.div`
-  background-color: #fc4b2a;
+  //background-color: #fc4b2a;
   width: 100%;
   height:90vh;
   display:flex;
