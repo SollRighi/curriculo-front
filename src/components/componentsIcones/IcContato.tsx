@@ -3,10 +3,9 @@ import ConnectWithoutContactOutlinedIcon from '@mui/icons-material/ConnectWithou
 
 interface iContato {
   texto: string;
-  aoClicar: () => void
 }
 
-const StyleHeaderItem = styled.button`
+const StyleHeaderItem = styled.a`
   display: flex;
   align-items: center;
   gap: 5px;
@@ -20,7 +19,7 @@ const StyleHeaderItem = styled.button`
 
 export function IcContato (props: iContato) {
   return(
-    <StyleHeaderItem onClick={props.aoClicar}>
+    <StyleHeaderItem href='#contato'>
       <ConnectWithoutContactOutlinedIcon />
       {props.texto}
     </StyleHeaderItem>

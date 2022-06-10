@@ -24,7 +24,7 @@ const StyleTexto = styled.p`
 
 export function Sobre (props: textoSobre) {
   return(
-    <StyleSobre>
+    <StyleSobre id="sobre">
       <StyleTexto>
         {props.texto}
       </StyleTexto>

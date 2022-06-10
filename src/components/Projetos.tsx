@@ -21,7 +21,7 @@ const StyleTitulo = styled.h1`
 
 export function Projetos (props: iProjetos) {
   return (
-    <StyleProjetos>
+    <StyleProjetos id="projetos">
       <StyleTitulo> { props.titulo } </StyleTitulo>
     </StyleProjetos>
   )

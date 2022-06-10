@@ -3,10 +3,9 @@ import InsertCommentOutlinedIcon from '@mui/icons-material/InsertCommentOutlined
 
 interface iComentarios {
   texto: string;
-  aoClicar: () => void
 }
 
-const StyleHeaderItem = styled.button`
+const StyleHeaderItem = styled.a`
   display: flex;
   align-items: center;
   gap: 5px;
@@ -20,7 +19,7 @@ const StyleHeaderItem = styled.button`
 
 export function IcComentarios (props: iComentarios) {
   return(
-    <StyleHeaderItem onClick={props.aoClicar}>
+    <StyleHeaderItem href='#comentario'>
       <InsertCommentOutlinedIcon />
       {props.texto}
     </StyleHeaderItem>

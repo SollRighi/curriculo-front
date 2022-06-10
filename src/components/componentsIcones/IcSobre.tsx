@@ -3,10 +3,9 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 interface iSobre {
   texto: string;
-  aoClicar: () => void
 }
 
-const StyleHeaderItem = styled.button`
+const StyleHeaderItem = styled.a`
   display: flex;
   align-items: center;
   gap: 5px;
@@ -20,7 +19,7 @@ const StyleHeaderItem = styled.button`
 
 export function IcSobre (props: iSobre) {
   return(
-    <StyleHeaderItem onClick={props.aoClicar}>
+    <StyleHeaderItem href='#sobre'>
       <InfoOutlinedIcon />
       {props.texto}
     </StyleHeaderItem>

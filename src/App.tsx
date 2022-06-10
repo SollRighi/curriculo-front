@@ -3,13 +3,17 @@ import { Apresentacao } from './components/Apresentacao'
 import sol from './components/imagens/sol.jpg'
 import { Sobre } from './components/Sobre';
 import { Projetos } from './components/Projetos';
-//import { Comentarios } from './components/Comentarios';
+import { Comentarios } from './components/Comentarios';
 import { Contato } from './components/Contato';
 import {IcSobre} from './components/componentsIcones/IcSobre';
 import {IcProjetos} from './components/componentsIcones/IcProjetos';
 import {IcContato} from './components/componentsIcones/IcContato';
 import {IcComentarios} from './components/componentsIcones/IcComentarios';
-//import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
+const urlBack = "https://curriculo-growdev.herokuapp.com"
+// const urlBack = "http://localhost:8000"
 
 const StyleBody = styled.div`
   display: flex;
@@ -19,7 +23,6 @@ const StyleBody = styled.div`
   background: #200122;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to top, #6f0000, #200122);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to top, #6f0000, #200122); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
 `
 const StyleDinamico = styled.div`
   display: flex;
@@ -37,25 +40,70 @@ const StyleHeader = styled.div`
   padding: 0;
 `
 
+interface iComentario {
+  nome: string;
+  comentario: string
+}
+
 function App() {
 
-  //const [nome, setNome] = useState("")
+  const [comentarios, setComentarios] = useState<iComentario[]>([])
 
-  function printarTela () {
-    console.log("verificar")
+  function buscaComentarios () {
+    axios.get(`${urlBack}/comentarios`)
+      .then((res) => {
+        setComentarios(res.data)
+        console.log(res.data)
+      })
+      .catch((err) => {
+        alert(err.response.data)
+    })
+  }
+  
+  useEffect(() => {
+    buscaComentarios()
+  }, [])
+
+  function salvarComentario (nome: string, comentario: string) {
+    
+    axios.post(`${urlBack}/comentario`, {
+      nome: nome,
+      comentario: comentario
+
+    }).then((res) => {
+      console.log(res);
+ 
+      buscaComentarios()
+      alert(res.data)
+
+    }).catch((err) => {
+        alert(err.response.data)
+    })
   }
 
-  // function salvarComentario () {
+  function salvarContato (nomeContato: string, numeroContato: string, emailContato: string) {
+    axios.post(`${urlBack}/contato`, {
+      nomeContato: nomeContato, 
+      numeroContato: numeroContato,
+      emailContato: emailContato, 
+  
+    }).then((res) => {
+      console.log(res)
+      alert(res.data)
+  
+    }).catch((err) => {
+      alert(err.response.data)
+    })
+  }
 
-  // }
 
   return (
     <StyleBody>
       <StyleHeader>
-        <IcSobre texto="Sobre" aoClicar={() => printarTela ()}/>
-        <IcProjetos texto="Projetos" aoClicar={() => printarTela ()}/>
-        <IcContato texto="Contato" aoClicar={() => printarTela ()}/>
-        <IcComentarios texto="Comentarios" aoClicar={() => printarTela ()}/>
+        <IcSobre texto="Sobre" />
+        <IcProjetos texto="Projetos" />
+        <IcContato texto="Contato" />
+        <IcComentarios texto="Comentarios" />
       </StyleHeader>
       <Apresentacao 
         imagem={sol} 
@@ -77,13 +125,13 @@ function App() {
         //item
       />
       <StyleDinamico>
-        {/* <Comentarios 
-          // titulo="Comentarios:"
-          // aoClicar={() => salvarComentario()}
-          //aoAlterar={(e) => setNome (e.target.value)}
-        /> */}
+        <Comentarios 
+          titulo="Comentarios:"
+          aoClicar={(nome, comentario) => salvarComentario(nome, comentario)}
+        />
         <Contato 
           titulo="Deixe o seu contato:"
+          aoClicar={(nomeContato, numeroContato, emailContato) => salvarContato(nomeContato, numeroContato, emailContato)}
         />
       </StyleDinamico>
     </StyleBody>

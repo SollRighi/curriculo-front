@@ -1,12 +1,11 @@
 import styled from "styled-components"
 import TextField from '@mui/material/TextField';
-//import { useState } from "react";
+import { useState } from "react";
 import { Button } from "@mui/material";
 
 interface iTituloComentario {
   titulo: string;
-  aoClicar: () => void;
-  aoAlterar: () => void;
+  aoClicar: (nome: string, comentario: string) => void;
 }
 
 const StyleBodyCriaComentario = styled.div`
@@ -26,8 +25,16 @@ const StyleTitulo = styled.h1`
 `
 export function Comentarios (props: iTituloComentario) {
 
+  const [nome, setNome] = useState("")
+  const [comentario, setComentario] = useState("")
+
+  function limparCampoComentario () {
+    setNome("")
+    setComentario("")
+  }
+
   return(
-    <StyleBodyCriaComentario>
+    <StyleBodyCriaComentario id="comentario">
       <StyleTitulo> 
         {props.titulo} 
       </StyleTitulo>
@@ -36,17 +43,23 @@ export function Comentarios (props: iTituloComentario) {
           label="Nome"
           multiline
           maxRows={4}
-          onChange={props.aoAlterar}
+          value={nome}
+          onChange={((e) => setNome(e.target.value))}
         />
         <TextField
           id="outlined-multiline-static"
           label="Deixei o seu comentário:"
           multiline
           rows={4}
-          defaultValue=""
+          value={comentario}
+          onChange={((e) => setComentario(e.target.value))}
         />
         <Button 
-          variant="outlined" onClick={props.aoClicar}> Enviar
+          variant="outlined" 
+          onClick={() => {
+            props.aoClicar(nome, comentario)
+            limparCampoComentario()
+          }}> Enviar
         </Button>
     </StyleBodyCriaComentario>
   )

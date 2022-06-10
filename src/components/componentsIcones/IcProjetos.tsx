@@ -3,10 +3,9 @@ import AccountTreeOutlinedIcon from '@mui/icons-material/AccountTreeOutlined';
 
 interface iProjetos {
   texto: string;
-  aoClicar: () => void
 }
 
-const StyleHeaderItem = styled.button`
+const StyleHeaderItem = styled.a`
   display: flex;
   align-items: center;
   gap: 5px;
@@ -20,7 +19,7 @@ const StyleHeaderItem = styled.button`
 
 export function IcProjetos (props: iProjetos) {
   return(
-    <StyleHeaderItem onClick={props.aoClicar}>
+    <StyleHeaderItem href='#projetos'>
       <AccountTreeOutlinedIcon />
       {props.texto}
     </StyleHeaderItem>
