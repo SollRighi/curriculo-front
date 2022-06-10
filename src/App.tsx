@@ -3,7 +3,7 @@ import { Apresentacao } from './components/Apresentacao'
 import sol from './components/imagens/sol.jpg'
 import { Sobre } from './components/Sobre';
 import { Projetos } from './components/Projetos';
-import { Comentarios } from './components/Comentarios';
+import { Comentarios, StyleTitulo } from './components/Comentarios';
 import { Contato } from './components/Contato';
 import {IcSobre} from './components/componentsIcones/IcSobre';
 import {IcProjetos} from './components/componentsIcones/IcProjetos';
@@ -20,16 +20,18 @@ const StyleBody = styled.div`
   flex-direction:column;
   /* width: 100vw; */
   position: relative;
-  background: #200122;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #6f0000, #200122);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #6f0000, #200122); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #190A05;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #870000,#190A05);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #870000, #190A05); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
 `
 const StyleDinamico = styled.div`
   display: flex;
   width: 100%;
-  height: 70vh;
-  //background-color: #f7a48b;
-  gap: 300px;
+  height: 85vh;
+  gap: 100px;
 `
 const StyleHeader = styled.div`
   display: flex;
@@ -38,6 +40,33 @@ const StyleHeader = styled.div`
   justify-content: flex-end   ;
   margin: 0;
   padding: 0;
+`
+const StyleHistoricoComentarios = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 85vh;
+  gap: 50px;
+  align-items: center;
+`
+const StyleCardComentario = styled.div`
+  width: 300px;
+  padding: 20px; 
+  border-radius: 10px;
+  color: white;
+  box-shadow: 4px 4px 4px 2px rgba(248, 248, 248, 0.2);
+  h3 {
+    margin-left:0;
+    margin-right:0;
+    margin-top:0;
+    margin-bottom:10px;
+  }
+`
+const StyleGrid = styled.div`
+  display: grid;
+  grid-template-columns: 340px 340px;
+  justify-content:center;
+  gap: 80px;
 `
 
 interface iComentario {
@@ -81,11 +110,12 @@ function App() {
     })
   }
 
-  function salvarContato (nomeContato: string, numeroContato: string, emailContato: string) {
+  function salvarContato (nomeContato: string, numeroContato: string, emailContato: string, mensagemContato: string) {
     axios.post(`${urlBack}/contato`, {
-      nomeContato: nomeContato, 
-      numeroContato: numeroContato,
-      emailContato: emailContato, 
+      nome: nomeContato, 
+      telefone: numeroContato,
+      email: emailContato, 
+      mensagem: mensagemContato, 
   
     }).then((res) => {
       console.log(res)
@@ -95,7 +125,6 @@ function App() {
       alert(err.response.data)
     })
   }
-
 
   return (
     <StyleBody>
@@ -108,7 +137,7 @@ function App() {
       <Apresentacao 
         imagem={sol} 
         nome={"Solange Vitoria P. Righi"} 
-        profissao="Desenvolverora Web Full Stack Junior"
+        profissao="Desenvolvedora Web Full Stack Junior"
       />
       <Sobre 
         texto="&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
@@ -131,9 +160,22 @@ function App() {
         />
         <Contato 
           titulo="Deixe o seu contato:"
-          aoClicar={(nomeContato, numeroContato, emailContato) => salvarContato(nomeContato, numeroContato, emailContato)}
+          aoClicar={(nomeContato, numeroContato, emailContato, mensagemContato) => salvarContato(nomeContato, numeroContato, emailContato, mensagemContato)}
         />
       </StyleDinamico>
+      <StyleHistoricoComentarios id="historicoComentarios">
+        <StyleTitulo>
+          Historico de Comentários:
+        </StyleTitulo>
+        <StyleGrid>
+          {comentarios.map(
+            (comentario) => <StyleCardComentario>
+              <h3>{comentario.nome}</h3>
+              {comentario.comentario}
+            </StyleCardComentario>
+          )}
+        </StyleGrid>
+      </StyleHistoricoComentarios>
     </StyleBody>
   );
 }

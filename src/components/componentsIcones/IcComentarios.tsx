@@ -19,7 +19,7 @@ const StyleHeaderItem = styled.a`
 
 export function IcComentarios (props: iComentarios) {
   return(
-    <StyleHeaderItem href='#comentario'>
+    <StyleHeaderItem href='#historicoComentarios'>
       <InsertCommentOutlinedIcon />
       {props.texto}
     </StyleHeaderItem>

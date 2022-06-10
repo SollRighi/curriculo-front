@@ -1,7 +1,8 @@
 import styled from "styled-components"
 import TextField from '@mui/material/TextField';
 import { useState } from "react";
-import { Button } from "@mui/material";
+import { Button, } from "@mui/material";
+import { styled as styledMui } from "@mui/material/styles";
 
 interface iTituloComentario {
   titulo: string;
@@ -14,15 +15,34 @@ const StyleBodyCriaComentario = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-left: 150px;
+  margin-left: 80px;
 `
-const StyleTitulo = styled.h1`
+export const StyleTitulo = styled.p`
   font-family: 'Tai Heritage Pro', serif;
   font-size: 25px;
   color: white;
   margin-top: 30px;
   margin-left: 50px;
 `
+
+export const TextFieldStyled = styledMui(TextField)(() => ({
+  input: {
+    color: 'white',
+    '&::placeholder': {
+      color: 'white',
+    }
+  },
+  textarea: {
+    color: 'white'
+  },
+  fieldset: {
+    borderColor: 'white',
+    '&:hover': {
+      borderColor: 'white',
+    }
+  }
+}))
+
 export function Comentarios (props: iTituloComentario) {
 
   const [nome, setNome] = useState("")
@@ -38,15 +58,13 @@ export function Comentarios (props: iTituloComentario) {
       <StyleTitulo> 
         {props.titulo} 
       </StyleTitulo>
-      <TextField
+        <TextFieldStyled
           id="outlined-multiline-flexible"
           label="Nome"
-          multiline
-          maxRows={4}
           value={nome}
           onChange={((e) => setNome(e.target.value))}
         />
-        <TextField
+        <TextFieldStyled
           id="outlined-multiline-static"
           label="Deixei o seu comentário:"
           multiline
